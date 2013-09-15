@@ -12,11 +12,11 @@ public class Guessing_Game {
 	private static final int COUNTRY = 2; 
 	
 	private boolean stop_game = false;
-	private int category_choice = 0;
 	
 	private static Guessing_Game new_game = null;
 	
-	private Player new_player = null;
+	private Category item_toGuess = null;
+	private Player current_player = null;
 	private Rank new_rank = null;
 	private Database database = null;
 	private Screen new_screen = null;
@@ -26,6 +26,7 @@ public class Guessing_Game {
 	private Guessing_Game() {
 		stop_game = false;
 		database = new Database();
+		current_player = new Player();
 		new_screen = Screen.getScreen();
 		new_keypad = Keypad.getKeypad();
 	}
@@ -46,31 +47,39 @@ public class Guessing_Game {
 	}
 	
 	public void startNewGame(){
+		
 		new_screen.displayNewGame();
-		int tips = new_player.getPlayer_tips();
-		int guesses = new_player.getPlayer_guesses();
+		current_player.setDifficulty();
+		
 		while(!stop_game){
+			
+			int tips = current_player.getPlayer_tips();
+			int guesses = current_player.getPlayer_guesses();
 			new_screen.displayGameStatus(guesses, tips);
+			gettingGuesses();
 			
 		}
 	}
 	
 	public void gettingGuesses(){
-		
+		String guess = getGuess();
+		matchGuess(guess);
 	}
 	
-	public boolean matchGuess(){
+	public boolean matchGuess(String guess){
 		return false;
 	}
+	
+	
 	
 	public void categoryOption(){
 		int option = getOption();
 		switch(option){
 		case 1:
-			this.category_choice = FAMOUS;
+			item_toGuess = new Famous();
 			break;
 		case 2:
-			this.category_choice = COUNTRY;
+			item_toGuess = new Country();
 			break;
 		default:
 			break;
@@ -112,9 +121,13 @@ public class Guessing_Game {
 	}
 	
 	public int getOption(){
-		int result = 0;
-		result = new_keypad.get_intInput();
+		int result = new_keypad.get_intInput();
 		return result;
+	}
+	
+	public String getGuess(){
+		String guess = new_keypad.get_stringInput();
+		return guess;
 	}
 	
 	public static Guessing_Game getGuessingGame(){
