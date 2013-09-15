@@ -1,9 +1,10 @@
 package Model;
 
-public abstract class Category {
+import Controller.Tips;
+
+public abstract class Category implements Tips{
 
 	private static int difficulty_game = 0;
-	
 
 	public Category() {
 	}
