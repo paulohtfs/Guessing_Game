@@ -2,8 +2,10 @@ package Model;
 
 public class Player {
 
-	private String player_name = null;
 	private double player_score = 0;
+	
+	private String player_name = null;
+	private Category[] categorys = null;
 	
 	public Player() {
 	}
@@ -23,5 +25,6 @@ public class Player {
 	public void setPlayer_score(double player_score) {
 		this.player_score = player_score;
 	}
+	
 	
 }
