@@ -42,15 +42,25 @@ public class Guessing_Game {
 		difficultyOption();
 		new_screen.displayCategory();
 		categoryOption();
-		
+		startNewGame();
 	}
 	
 	public void startNewGame(){
 		new_screen.displayNewGame();
+		int tips = new_player.getPlayer_tips();
+		int guesses = new_player.getPlayer_guesses();
 		while(!stop_game){
-			new_screen.displayGameStatus(0, 0);
+			new_screen.displayGameStatus(guesses, tips);
 			
 		}
+	}
+	
+	public void gettingGuesses(){
+		
+	}
+	
+	public boolean matchGuess(){
+		return false;
 	}
 	
 	public void categoryOption(){
