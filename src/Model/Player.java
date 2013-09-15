@@ -3,6 +3,8 @@ package Model;
 public class Player {
 
 	private double player_score = 0;
+	private int player_guesses = 0;
+	private int player_tips = 0;
 	
 	private String player_name = null;
 	private Category[] categorys = null;
@@ -24,6 +26,22 @@ public class Player {
 
 	public void setPlayer_score(double player_score) {
 		this.player_score = player_score;
+	}
+
+	public int getPlayer_guesses() {
+		return player_guesses;
+	}
+
+	public void setPlayer_guesses(int player_guesses) {
+		this.player_guesses = player_guesses;
+	}
+
+	public int getPlayer_tips() {
+		return player_tips;
+	}
+
+	public void setPlayer_tips(int player_tips) {
+		this.player_tips = player_tips;
 	}
 	
 	
