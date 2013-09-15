@@ -15,5 +15,5 @@ public abstract class Category {
 	public static void setDifficulty_game(int difficulty_game) {
 		difficulty_game = difficulty_game;
 	}
-
+	
 }
