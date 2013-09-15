@@ -27,6 +27,28 @@ public class Screen {
 		System.out.println("------------------------------");
 	}
 	
+	public void displayCategory(){
+		System.out.println("------------------------------");
+		System.out.println("Category");
+		System.out.println("1>Famous");
+		System.out.println("2>Country");
+		System.out.println("------------------------------");
+	}
+	
+	public void displayNewGame(){
+		System.out.println("------------------------------");
+		System.out.println("Good Luck!");
+		System.out.println("Type 1 to display tips");		
+		System.out.println("------------------------------");
+	}
+	
+	public void displayGameStatus(int num_guesses, int num_tips){
+		System.out.println("------------------------------");
+		System.out.println("Guesses: " + num_guesses);
+		System.out.println("Tips: " + num_tips);
+		System.out.println("------------------------------");
+	}
+	
 	public void displayRank(){
 		
 	}
