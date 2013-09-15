@@ -8,14 +8,20 @@ public class Guessing_Game {
 	private static final int EASY = 1; 
 	private static final int MEDIUM = 2; 
 	private static final int HARD = 3; 
+	private static final int FAMOUS = 1; 
+	private static final int COUNTRY = 2; 
 	
 	private boolean stop_game = false;
+	private int category_choice = 0;
+	
+	private static Guessing_Game new_game = null;
+	
 	private Player new_player = null;
 	private Rank new_rank = null;
 	private Database database = null;
 	private Screen new_screen = null;
 	private Keypad new_keypad = null;
-	private static Guessing_Game new_game = null;
+	
 	
 	private Guessing_Game() {
 		stop_game = false;
@@ -31,9 +37,34 @@ public class Guessing_Game {
 		}
 	}
 
-	public void startGame(){
+	public void getGameOption(){
 		new_screen.displayDifficulty();
 		difficultyOption();
+		new_screen.displayCategory();
+		categoryOption();
+		
+	}
+	
+	public void startNewGame(){
+		new_screen.displayNewGame();
+		while(!stop_game){
+			new_screen.displayGameStatus(0, 0);
+			
+		}
+	}
+	
+	public void categoryOption(){
+		int option = getOption();
+		switch(option){
+		case 1:
+			this.category_choice = FAMOUS;
+			break;
+		case 2:
+			this.category_choice = COUNTRY;
+			break;
+		default:
+			break;
+		}
 	}
 	
 	public void difficultyOption(){
@@ -57,7 +88,7 @@ public class Guessing_Game {
 		int option = getOption();
 		switch(option){
 		case 1:
-			startGame();
+			getGameOption();
 			break;
 		case 2:
 			new_screen.displayRank();
