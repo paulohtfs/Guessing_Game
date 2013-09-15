@@ -56,30 +56,66 @@ public class Guessing_Game {
 			int tips = current_player.getPlayer_tips();
 			int guesses = current_player.getPlayer_guesses();
 			new_screen.displayGameStatus(guesses, tips);
-			gettingGuesses();
-			
+			new_screen.displyaGuessingOption();
+			guessingOption();
 		}
 	}
 	
-	public void gettingGuesses(){
+	public void tryGuess(){
 		String guess = getGuess();
-		matchGuess(guess);
+		if(matchGuess(guess)){
+			new_screen.displayWin();
+			this.stop_game = true;
+		}else{
+			new_screen.displayWrong();
+			this.current_player.decreasGuesses();
+		}
 	}
 	
 	public boolean matchGuess(String guess){
-		return false;
+		boolean result = false;
+		String correct_answer = item_toGuess.get_correctAnswer();
+		
+		correct_answer = correct_answer.replaceAll("\\s+", "");
+		guess = guess.replaceAll("\\s+", "");
+		
+		if(guess.equalsIgnoreCase(correct_answer)){
+			new_screen.setCorrect_answer(correct_answer);
+			result = true;
+		}else{
+			result = false;
+		}
+		return result;
 	}
 	
-	
+	public void guessingOption(){
+		int option = getOption();
+		switch(option){
+		case 1:
+			tryGuess();
+			break;
+		case 2:
+			int tip_number = new_screen.getTip();
+			if(item_toGuess.getOneTip(tip_number) != null){
+				new_screen.displayTips(item_toGuess);
+				this.current_player.decreasTips();				
+			}else{
+				this.current_player.setPlayer_guesses(0);
+			}
+			break;
+		default:
+			break;
+		}
+	}
 	
 	public void categoryOption(){
 		int option = getOption();
 		switch(option){
 		case 1:
-			item_toGuess = new Famous();
+			item_toGuess = current_player.getRandom(FAMOUS);
 			break;
 		case 2:
-			item_toGuess = new Country();
+			item_toGuess = current_player.getRandom(COUNTRY);
 			break;
 		default:
 			break;
@@ -121,15 +157,12 @@ public class Guessing_Game {
 	}
 	
 	public int getOption(){
-		int result = new_keypad.get_intInput();
-		return result;
+		return new_keypad.get_intInput();
 	}
 	
 	public String getGuess(){
-		String guess = new_keypad.get_stringInput();
-		return guess;
+		return new_keypad.get_stringInput();
 	}
-	
 	public static Guessing_Game getGuessingGame(){
 		if(new_game==null){
 			new_game = new Guessing_Game();

@@ -6,21 +6,23 @@ import java.util.Scanner;
 public class Keypad {
 
 	private static Keypad new_keypad = null;
-	private Scanner input = null;
+	private Scanner inputInt = null;
+	private Scanner inputString = null;
 	
 	public Keypad() {
-		input = new Scanner(System.in);
+		inputInt = new Scanner(System.in);
+		inputString = new Scanner(System.in);
 	}
 
 	public int get_intInput(){
 		int result = 0;
-		result = input.nextInt();
+		result = inputInt.nextInt();
 		return result;
 	}
 	
 	public String get_stringInput(){
 		String result = null;
-		result = input.next();
+		result = inputString.nextLine();
 		return result;
 	}
 	

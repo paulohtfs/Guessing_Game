@@ -1,10 +1,13 @@
 package View;
 
 import Controller.Keypad;
+import Model.Category;
 
 public class Screen {
 	
-	private static Screen new_menu = null; 
+	private int tip = 0;
+	private static Screen new_menu = null;
+	private String correct_answer = null;
 
 	private Screen() {
 	}
@@ -37,8 +40,7 @@ public class Screen {
 	
 	public void displayNewGame(){
 		System.out.println("------------------------------");
-		System.out.println("Good Luck!");
-		System.out.println("Type 1 to display tips");		
+		System.out.println("Good Luck!");	
 		System.out.println("------------------------------");
 	}
 	
@@ -47,6 +49,39 @@ public class Screen {
 		System.out.println("Guesses: " + num_guesses);
 		System.out.println("Tips: " + num_tips);
 		System.out.println("------------------------------");
+	}
+	
+	public void displyaGuessingOption(){
+		System.out.println("------------------------------");
+		System.out.println("1>Guess");
+		System.out.println("2>Tips");
+		System.out.println("------------------------------");		
+	}
+	
+	public void displayTips(Category toGuess){
+		System.out.println("------------------------------");				
+		System.out.println(toGuess.getOneTip(this.tip));
+		System.out.println("------------------------------");	
+		this.tip++;
+	}
+	
+	public void displayLose(){		
+		System.out.println("------------------------------");		
+		System.out.println("Sorry. You Lose");
+		System.out.println("------------------------------");		
+	}
+	
+	public void displayWin(){		
+		System.out.println("------------------------------");		
+		System.out.println("You Win!");
+		System.out.println("Correct Answer: "+correct_answer);
+		System.out.println("------------------------------");		
+	}
+	
+	public void displayWrong(){		
+		System.out.println("------------------------------");		
+		System.out.println("Wrong Guess");
+		System.out.println("------------------------------");		
 	}
 	
 	public void displayRank(){
@@ -60,6 +95,14 @@ public class Screen {
 			new_menu = null;
 		}
 		return new_menu;
+	}
+
+	public int getTip() {
+		return tip;
+	}
+
+	public void setCorrect_answer(String correct_answer) {
+		this.correct_answer = correct_answer;
 	}
 	
 }

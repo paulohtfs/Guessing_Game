@@ -4,13 +4,14 @@ package Model;
 public class Famous extends Category {
 
 	private String famous_name = null;
-	private String[] tips = null;
+	private String[] tips = {};
 	
 	public Famous() {
 		famous_name = "Jack Johnson";
 		addsTips("It's a singer");
 		addsTips("Folks style");
 		addsTips("Won a grammy in 2004");
+		
 	}
 	
 	@Override
@@ -29,6 +30,38 @@ public class Famous extends Category {
 			this.setTips(new_tips);
 		}
 	}
+	
+	@Override
+	public String getOneTip(int tip) {
+		String result = null;			
+		if(tip<tips.length){
+			result = tips[tip];
+		}else{
+			result = null;
+		}
+		return result;
+	}
+	
+	@Override
+	public String get_correctAnswer() {
+		String result = this.famous_name;
+		return result;
+	}
+	
+	@Override
+	public String[] getTips() {
+		return tips;
+	}
+	
+	@Override
+	public void setTips(String[] tips) {
+		this.tips = tips;
+	}
+	
+	@Override
+	public int getTipsLength() {
+		return (this.tips.length);
+	}
 
 	public String getFamous_name() {
 		return famous_name;
@@ -37,16 +70,5 @@ public class Famous extends Category {
 	public void setFamous_name(String famous_name) {
 		this.famous_name = famous_name;
 	}
-
-	@Override
-	public String[] getTips() {
-		return tips;
-	}
-
-	@Override
-	public void setTips(String[] tips) {
-		this.tips = tips;
-	}
-
 	
 }

@@ -1,18 +1,45 @@
 package Model;
 
+import java.util.Random;
+
 public class Player {
 	
 	private static final int EASY = 1; 
 	private static final int MEDIUM = 2; 
 	private static final int HARD = 3; 
+	private static final int FAMOUS = 1; 
+	private static final int COUNTRY = 2; 
 	
 	private double player_score = 0;
 	private int player_guesses = 0;
 	private int player_tips = 0;
 	
 	private String player_name = null;
+	private Category[] categories = {};
 	
 	public Player() {
+		Famous jack_johnson = new Famous();
+		addsCategories(jack_johnson);
+		Famous jack = new Famous();
+		addsCategories(jack);
+		Famous johnson = new Famous();
+		addsCategories(johnson);
+	}
+	
+	public void addsCategories(Category categories){
+		
+		int current_length = this.categories.length;
+		
+		if(current_length>10){
+			System.out.println("Max Category");
+		}else{
+			Category[] new_category = new Category[current_length+1];
+			for(int i = 0; i<current_length;i++){
+				new_category[i] = this.categories[i];
+			}
+			new_category[new_category.length-1] = categories;
+			this.setCategories(new_category);
+		}
 	}
 	
 	public void setDifficulty(){
@@ -36,12 +63,15 @@ public class Player {
 		switch(difficulty){
 		case EASY:
 			this.player_guesses = 20;
+			result = this.player_guesses;
 			break;
 		case MEDIUM:
 			this.player_guesses = 15;
+			result = this.player_guesses;
 			break;
 		case HARD:
 			this.player_guesses = 10;
+			result = this.player_guesses;
 			break;
 		default:
 			break;
@@ -57,12 +87,15 @@ public class Player {
 		switch(difficulty){
 		case EASY:
 			this.player_tips = 10;
+			result = this.player_tips;
 			break;
 		case MEDIUM:
 			this.player_tips = 5;
+			result = this.player_tips;
 			break;
 		case HARD:
 			this.player_tips = 3;
+			result = this.player_tips;
 			break;
 		default:
 			break;
@@ -70,6 +103,48 @@ public class Player {
 		return result;
 	}
 	
+	public Category getRandom(int category){
+		
+		Category result_category = null;
+		
+		switch(category){
+		case FAMOUS:
+			result_category = getInstanceof(category);
+			break;
+		case COUNTRY:
+			result_category = getInstanceof(category);
+			break;
+		}
+		return result_category;
+	}
+	
+	public Category getInstanceof(int category){
+		
+		Category result_category = null;
+		int randomNumber = randomNumber();
+		
+		switch(category){
+		case FAMOUS:
+			while(!(result_category instanceof Famous)){
+				result_category = categories[randomNumber];
+			}
+			break;
+		case COUNTRY:
+			while(!(result_category instanceof Country)){
+				result_category = categories[randomNumber];
+			}
+			break;			
+		}
+		return result_category;
+	}
+	
+	public int randomNumber(){
+		int result = 0;
+		Random random = new Random(System.currentTimeMillis());
+		random.nextInt(this.categories.length);
+		result = random.nextInt(this.categories.length);
+		return result;
+	}
 	
 	public String getPlayer_name() {
 		return player_name;
@@ -102,4 +177,14 @@ public class Player {
 	public void setPlayer_tips(int player_tips) {
 		this.player_tips = player_tips;
 	}
+
+	public Category[] getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Category[] categories) {
+		this.categories = categories;
+	}
+	
+	
 }
