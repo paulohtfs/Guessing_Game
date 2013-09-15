@@ -7,10 +7,6 @@ public class Famous extends Category {
 	private String[] tips = {};
 	
 	public Famous() {
-		famous_name = "Jack Johnson";
-		addsTips("It's a singer");
-		addsTips("Folks style");
-		addsTips("Won a grammy in 2004");
 		
 	}
 	

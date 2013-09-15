@@ -18,12 +18,6 @@ public class Player {
 	private Category[] categories = {};
 	
 	public Player() {
-		Famous jack_johnson = new Famous();
-		addsCategories(jack_johnson);
-		Famous jack = new Famous();
-		addsCategories(jack);
-		Famous johnson = new Famous();
-		addsCategories(johnson);
 	}
 	
 	public void addsCategories(Category categories){
