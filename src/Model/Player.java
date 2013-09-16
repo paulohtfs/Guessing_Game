@@ -106,16 +106,16 @@ public class Player {
 	
 	//	Retorna um item aleatorio para 
 	//	adivinhação com base na categoria escolhida
-	public Category getRandom(int category){
+	public Category getRandom(int category_option){
 		
 		Category result_category = null;
 		
-		switch(category){
+		switch(category_option){
 		case FAMOUS:
-			result_category = getInstanceof(category);
+			result_category = getInstanceof(category_option);
 			break;
 		case COUNTRY:
-			result_category = getInstanceof(category);
+			result_category = getInstanceof(category_option);
 			break;
 		}
 		return result_category;
@@ -123,12 +123,12 @@ public class Player {
 	
 	//	Verifica a instacia da categoria e retorna um
 	//	upcasting categoria a partir de um numero aleatorio
-	public Category getInstanceof(int category){
+	public Category getInstanceof(int category_option){
 		
 		Category result_category = null;
 		int randomNumber = randomNumber();
 		
-		switch(category){
+		switch(category_option){
 		case FAMOUS:
 			while(!(result_category instanceof Famous)){
 				result_category = categories[randomNumber];

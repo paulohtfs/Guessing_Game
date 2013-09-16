@@ -33,6 +33,44 @@ public class Guessing_Game {
 		current_player = new Player();
 		new_screen = Screen.getScreen();
 		new_keypad = Keypad.getKeypad();
+		
+		exempleTest();
+	}
+	
+	//	Método criado para teste em tempo de execução
+	private void exempleTest(){
+		Famous famous01 = new Famous();
+		famous01.setFamous_name("Angelina Jolie");
+		famous01.addsTips("She's an actress");
+		famous01.addsTips("First work was in 1982");
+		famous01.addsTips("Breakthrough 1998");
+		famous01.addsTips("Worked on the movie \"Wanted\"");
+		famous01.addsTips("She has 6 children");
+		famous01.addsTips("Married to Brad Pitt");
+		
+		Famous famous02 = new Famous();
+		famous02.setFamous_name("Johnny Cash");
+		famous02.addsTips("He's a singer");
+		famous02.addsTips("Worked as an actor in \"Walk the Line\"");
+		famous02.addsTips("Born in Arkansas (USA)");
+		famous02.addsTips("Died in 2003");
+		famous02.addsTips("His first band named \"The Landsberg Barbarians\"");
+		famous02.addsTips("His second wife was June Carter");
+		famous02.addsTips("His most famous song \"Hurt\"");
+		
+		Country country01 = new Country();
+		country01.setCountry_name("Texas");
+		country01.addsTips("Second largest state in the USA");
+		country01.addsTips("Second most populous state in the USA");
+		country01.addsTips("Spoken languages: English and Spanish");
+		country01.addsTips("Largest city: Houston");
+		country01.addsTips("Governor: Rick Perry");
+		country01.addsTips("Senators: John Cornyn");
+		country01.addsTips("Capital: Austin");
+		
+		this.current_player.addsCategories(famous01);
+		this.current_player.addsCategories(famous02);
+		this.current_player.addsCategories(country01);
 	}
 	
 	//	Dá inicio ao jogo
