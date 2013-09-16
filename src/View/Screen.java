@@ -1,3 +1,7 @@
+/*
+ * File: Screen.java
+ * Purpose: Representação de uma tela, no caso o console
+ */
 package View;
 
 import Controller.Keypad;

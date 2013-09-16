@@ -1,15 +1,20 @@
+/*
+ * File: Country.java
+ * Purpose: Representação de um País para adivinhação
+ */
 package Model;
 
 
 public class Country extends Category{
 
 	private String country_name = null;
-	private String[] tips = {};
+	private String[] tips = {}; 
 	
 	public Country() {
 		
 	}
 
+	//	Adiciona uma nova dica ao conjunto de dicas
 	@Override
 	public void addsTips(String tips) {
 		
@@ -26,35 +31,45 @@ public class Country extends Category{
 			this.setTips(new_tips);
 		}
 	}
+	
+	@Override
+	public String getOneTip(int tip) {
+		String result = null;			
+		if(tip<tips.length){
+			result = tips[tip];
+		}else{
+			result = null;
+		}
+		return result;
+	}
+	
+	@Override
+	public String get_correctAnswer() {
+		String result = this.country_name;
+		return result;
+	}
 
 	@Override
 	public String[] getTips() {
-		// TODO Auto-generated method stub
-		return null;
+		return tips;
 	}
 
 	@Override
 	public void setTips(String[] tips) {
-		// TODO Auto-generated method stub
-		
+		this.tips = tips;
 	}
 
 	@Override
 	public int getTipsLength() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (this.tips.length);
 	}
 
-	@Override
-	public String getOneTip(int tip) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getCountry_name() {
+		return country_name;
 	}
 
-	@Override
-	public String get_correctAnswer() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setCountry_name(String country_name) {
+		this.country_name = country_name;
 	}
 	
 

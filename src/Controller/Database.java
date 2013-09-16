@@ -1,3 +1,12 @@
+/*
+ * File: Database.java
+ * Porpose: Estrair do banco de dados os itens para adivinhação
+ * 	assim como as suas dicas
+ */
+
+/*
+ * ATTENTION! Esta classe ainda não participa dos fluxos do programa
+ */
 package Controller;
 
 import java.io.File;
@@ -14,6 +23,7 @@ public class Database {
 		}
 	}
 	
+	//	Verifica a existencia do arquivo
 	public boolean verify_file(File database_file){
 		boolean result = false;
 		if(database_file.exists()){
@@ -38,6 +48,7 @@ public class Database {
 		return result;
 	}
 	
+	//	Verifica a existencia do diretório
 	public boolean verify_directory(File directory){
 		boolean result = directory.mkdir();
 		System.out.println(result);

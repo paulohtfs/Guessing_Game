@@ -1,3 +1,7 @@
+/*
+ * File: Player
+ * Purpose: Representação do jogador quanto as tentativas, pontuações...
+ */
 package Model;
 
 import java.util.Random;
@@ -11,15 +15,16 @@ public class Player {
 	private static final int COUNTRY = 2; 
 	
 	private double player_score = 0;
-	private int player_guesses = 0;
-	private int player_tips = 0;
+	private int player_guesses = 0;	//	Quantidade máxima de tentativas de adivinhação
+	private int player_tips = 0; //	Quantidade máxima de dicas a serem exibidas
 	
-	private String player_name = null;
-	private Category[] categories = {};
+	private String player_name = null; 
+	private Category[] categories = {}; //	Contem todos os itens para adivinhação
 	
 	public Player() {
 	}
 	
+	//	Adiciona categoria ao vetor"categories"
 	public void addsCategories(Category categories){
 		
 		int current_length = this.categories.length;
@@ -49,6 +54,7 @@ public class Player {
 		this.player_tips--;
 	}
 	
+	//	Avalia a quantidade de adivinhações com base na dificuldade
 	private int totalGuesses(){
 		
 		int result = 0;
@@ -73,6 +79,7 @@ public class Player {
 		return result;
 	}
 	
+	//	Avalia a quantidade de dicas para visualizar com base na dificuldade
 	private int totalTips(){
 		
 		int result = 0;
@@ -97,6 +104,8 @@ public class Player {
 		return result;
 	}
 	
+	//	Retorna um item aleatorio para 
+	//	adivinhação com base na categoria escolhida
 	public Category getRandom(int category){
 		
 		Category result_category = null;
@@ -112,6 +121,8 @@ public class Player {
 		return result_category;
 	}
 	
+	//	Verifica a instacia da categoria e retorna um
+	//	upcasting categoria a partir de um numero aleatorio
 	public Category getInstanceof(int category){
 		
 		Category result_category = null;
@@ -132,6 +143,7 @@ public class Player {
 		return result_category;
 	}
 	
+	//	Gerador de numero aleatório
 	public int randomNumber(){
 		int result = 0;
 		Random random = new Random(System.currentTimeMillis());

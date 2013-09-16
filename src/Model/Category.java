@@ -1,3 +1,7 @@
+/*
+ * File: Category.java
+ * Purpose: Representa categorias de adivinhação
+ */
 package Model;
 
 import Controller.Tips;

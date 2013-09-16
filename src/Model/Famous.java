@@ -1,3 +1,7 @@
+/*
+ * File: Famous.java
+ * Purpose: Representação de um Famoso para adivinhação
+ */
 package Model;
 
 

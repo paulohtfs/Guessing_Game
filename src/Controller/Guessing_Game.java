@@ -1,3 +1,6 @@
+/* File: Guessing_Game.java
+ * Purpose: Essa classe representa o controle interno do jogo
+ */
 package Controller;
 
 import View.Screen;
@@ -5,15 +8,16 @@ import Model.*;
 
 public class Guessing_Game {
 
+	//	Constantes para identificar pontos criticos
 	private static final int EASY = 1; 
 	private static final int MEDIUM = 2; 
 	private static final int HARD = 3; 
 	private static final int FAMOUS = 1; 
 	private static final int COUNTRY = 2; 
 	
-	private boolean stop_game = false;
+	private boolean stop_game = false; //	Condição para parada total do jogo
 	
-	private static Guessing_Game new_game = null;
+	private static Guessing_Game new_game = null; // Utilizado para verificar unica instancia
 	
 	private Category item_toGuess = null;
 	private Player current_player = null;
@@ -31,6 +35,7 @@ public class Guessing_Game {
 		new_keypad = Keypad.getKeypad();
 	}
 	
+	//	Dá inicio ao jogo
 	public void runGuessing_Game(){
 		while(!stop_game){
 			new_screen.displayMenu();
@@ -38,6 +43,9 @@ public class Guessing_Game {
 		}
 	}
 
+	
+	//	Define as configurações do jogo a 
+	//	partir da opçõe do usuário
 	public void getGameOption(){
 		new_screen.displayDifficulty();
 		difficultyOption();
@@ -46,6 +54,7 @@ public class Guessing_Game {
 		startNewGame();
 	}
 	
+	//	Começa uma nova partida
 	public void startNewGame(){
 		
 		new_screen.displayNewGame();
@@ -61,17 +70,23 @@ public class Guessing_Game {
 		}
 	}
 	
+	//	Estabelece condições para parada do jogo
 	public void tryGuess(){
+		
 		String guess = getGuess();
+		
 		if(matchGuess(guess)){
 			new_screen.displayWin();
 			this.stop_game = true;
 		}else{
 			new_screen.displayWrong();
 			this.current_player.decreasGuesses();
+			this.stop_game = false;
 		}
 	}
 	
+	//	Faz o comparativo entre o item a ser adivinhado
+	//	e a tentativa do usuário.
 	public boolean matchGuess(String guess){
 		boolean result = false;
 		String correct_answer = item_toGuess.get_correctAnswer();
@@ -88,6 +103,8 @@ public class Guessing_Game {
 		return result;
 	}
 	
+	//	Define fluxo de acordo com a opção do usuário
+	//	para o menu de adivinhações
 	public void guessingOption(){
 		int option = getOption();
 		switch(option){
@@ -108,6 +125,8 @@ public class Guessing_Game {
 		}
 	}
 	
+	//	Define fluxo de acordo com a opção do usuário
+	//	para o menu de categorias
 	public void categoryOption(){
 		int option = getOption();
 		switch(option){
@@ -122,6 +141,8 @@ public class Guessing_Game {
 		}
 	}
 	
+	//	Define fluxo de acordo com a opção do usuário
+	//	para o menu de dificuldades
 	public void difficultyOption(){
 		int option = getOption();
 		switch(option){
@@ -139,6 +160,8 @@ public class Guessing_Game {
 		}
 	}
 	
+	//	Define fluxo de acordo com a opção do usuário
+	//	para o menu principal
 	public void mainOption(){
 		int option = getOption();
 		switch(option){
@@ -156,13 +179,19 @@ public class Guessing_Game {
 		}
 	}
 	
+	//	Coleta o inteiro correspondente a opção
+	//	do menu inserida pelo usuário
 	public int getOption(){
 		return new_keypad.get_intInput();
 	}
 	
+	//	Coleta a stringe correspondente a tentativa de
+	//	adivinhação do usuário
 	public String getGuess(){
 		return new_keypad.get_stringInput();
 	}
+	
+	//	Estabelece condição para apenas uma instancia desta classe
 	public static Guessing_Game getGuessingGame(){
 		if(new_game==null){
 			new_game = new Guessing_Game();

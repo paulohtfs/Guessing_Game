@@ -1,3 +1,7 @@
+/*
+ * File: Keypad.java
+ * Purpose: Representa as entradas inseridas pelo usuário
+ */
 package Controller;
 
 import java.util.Scanner;
@@ -26,6 +30,7 @@ public class Keypad {
 		return result;
 	}
 	
+	//	Estabelece condição para apenas uma instancia desta class
 	public static Keypad getKeypad(){
 		if(new_keypad==null){
 			new_keypad = new Keypad();
